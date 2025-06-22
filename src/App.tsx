@@ -10,8 +10,9 @@ import LandingPage from './components/LandingPage';
 import Ledger from './components/Ledger';
 import GratitudeLedger from './components/GratitudeLedger';
 import Memorial from './components/Memorial';
+import CommunityGuidelines from './components/CommunityGuidelines';
 
-export type Screen = 'landing' | 'dashboard' | 'send' | 'receive' | 'history' | 'account' | 'ledger' | 'gratitude-ledger' | 'memorial';
+export type Screen = 'landing' | 'dashboard' | 'send' | 'receive' | 'history' | 'account' | 'ledger' | 'gratitude-ledger' | 'memorial' | 'community-guidelines';
 
 function App() {
   const [currentScreen, setCurrentScreen] = useState<Screen>('landing');
@@ -41,6 +42,8 @@ function App() {
         return <GratitudeLedger onBack={() => navigateToScreen('dashboard')} />;
       case 'memorial':
         return <Memorial onBack={() => navigateToScreen('dashboard')} />;
+      case 'community-guidelines':
+        return <CommunityGuidelines onBack={() => navigateToScreen('landing')} />;
       default:
         return <Dashboard balance={userBalance} onNavigate={navigateToScreen} />;
     }
@@ -48,7 +51,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
-      {currentScreen !== 'landing' && (
+      {currentScreen !== 'landing' && currentScreen !== 'community-guidelines' && (
         <Header onNavigate={navigateToScreen} />
       )}
       
@@ -59,7 +62,7 @@ function App() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.3 }}
-          className={currentScreen === 'landing' ? '' : 'pt-20'}
+          className={currentScreen === 'landing' || currentScreen === 'community-guidelines' ? '' : 'pt-20'}
         >
           {renderScreen()}
         </motion.main>

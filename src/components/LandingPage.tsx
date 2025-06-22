@@ -4,9 +4,10 @@ import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink
 
 interface LandingPageProps {
   onGetStarted: () => void;
+  onNavigate?: (screen: string) => void;
 }
 
-const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
+const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) => {
   const [timeLeft, setTimeLeft] = useState({
     days: 12,
     hours: 20,
@@ -476,7 +477,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                     Blockchain Technology
                   </motion.button>
                 </li>
-                <li><a href="#" className="hover:text-white transition-colors">Community Guidelines</a></li>
+                <li>
+                  <motion.button
+                    onClick={() => onNavigate && onNavigate('community-guidelines')}
+                    className="hover:text-white transition-colors text-left"
+                    whileHover={{ x: 2 }}
+                  >
+                    Community Guidelines
+                  </motion.button>
+                </li>
               </ul>
             </div>
 
