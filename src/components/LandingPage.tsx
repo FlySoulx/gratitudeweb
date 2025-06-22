@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink, X, Brain, Sparkles } from 'lucide-react';
+import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink, X, Brain, Sparkles, Shield, Zap, Globe, Link } from 'lucide-react';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -14,6 +14,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
     seconds: 57
   });
   const [showScienceModal, setShowScienceModal] = useState(false);
+  const [showBlockchainModal, setShowBlockchainModal] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -48,10 +49,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setShowScienceModal(false);
+        setShowBlockchainModal(false);
       }
     };
 
-    if (showScienceModal) {
+    if (showScienceModal || showBlockchainModal) {
       document.addEventListener('keydown', handleEscape);
       document.body.style.overflow = 'hidden';
     } else {
@@ -62,7 +64,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
       document.removeEventListener('keydown', handleEscape);
       document.body.style.overflow = 'unset';
     };
-  }, [showScienceModal]);
+  }, [showScienceModal, showBlockchainModal]);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -465,7 +467,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                     The Science of Gratitude
                   </motion.button>
                 </li>
-                <li><a href="#" className="hover:text-white transition-colors">Blockchain Technology</a></li>
+                <li>
+                  <motion.button
+                    onClick={() => setShowBlockchainModal(true)}
+                    className="hover:text-white transition-colors text-left"
+                    whileHover={{ x: 2 }}
+                  >
+                    Blockchain Technology
+                  </motion.button>
+                </li>
                 <li><a href="#" className="hover:text-white transition-colors">Community Guidelines</a></li>
               </ul>
             </div>
@@ -648,6 +658,239 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                     whileTap={{ scale: 0.95 }}
                   >
                     Start Your Gratitude Journey
+                  </motion.button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Blockchain Technology Modal */}
+      <AnimatePresence>
+        {showBlockchainModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setShowBlockchainModal(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-gray-900 border border-gray-700 rounded-3xl p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center space-x-3">
+                  <motion.div
+                    className="w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-500 rounded-xl flex items-center justify-center"
+                    whileHover={{ rotate: 5 }}
+                  >
+                    <Link className="h-6 w-6 text-white" />
+                  </motion.div>
+                  <h2 className="text-3xl font-bold text-white">Blockchain Technology</h2>
+                </div>
+                <motion.button
+                  onClick={() => setShowBlockchainModal(false)}
+                  className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-xl flex items-center justify-center transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X className="h-5 w-5 text-gray-400" />
+                </motion.button>
+              </div>
+
+              {/* Content */}
+              <div className="space-y-6">
+                {/* What is Web3 */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-gradient-to-br from-blue-500/10 to-teal-500/10 border border-blue-500/20 rounded-2xl p-6"
+                >
+                  <div className="flex items-start space-x-4">
+                    <motion.div
+                      className="flex-shrink-0 mt-1"
+                      animate={{ scale: [1, 1.1, 1] }}
+                      transition={{ duration: 2, repeat: Infinity }}
+                    >
+                      <Globe className="h-6 w-6 text-blue-400" />
+                    </motion.div>
+                    <div>
+                      <h3 className="text-xl font-bold text-blue-300 mb-4">What is Web3?</h3>
+                      <p className="text-gray-300 leading-relaxed">
+                        Web3 represents the next evolution of the internet - a decentralized web where users own their data, 
+                        digital assets, and interactions. Unlike traditional platforms that control your content and value, 
+                        Web3 puts <span className="text-blue-400 font-semibold">you in control</span>.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Concepts Grid */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
+                  <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                    <div className="flex items-center space-x-2 mb-3">
+                      <Coins className="h-5 w-5 text-yellow-400" />
+                      <h4 className="font-semibold text-yellow-300">Cryptocurrency</h4>
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      Digital money that exists on blockchain networks. Unlike traditional currency, 
+                      crypto is decentralized, transparent, and can be programmed with smart features.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                    <div className="flex items-center space-x-2 mb-3">
+                      <Zap className="h-5 w-5 text-purple-400" />
+                      <h4 className="font-semibold text-purple-300">Smart Contracts</h4>
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      Self-executing contracts with terms directly written into code. They automatically 
+                      execute when conditions are met, eliminating the need for intermediaries.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                    <div className="flex items-center space-x-2 mb-3">
+                      <Database className="h-5 w-5 text-green-400" />
+                      <h4 className="font-semibold text-green-300">Blockchain</h4>
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      A distributed ledger that records transactions across many computers. 
+                      Once recorded, data cannot be altered, ensuring transparency and security.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                    <div className="flex items-center space-x-2 mb-3">
+                      <Heart className="h-5 w-5 text-red-400" />
+                      <h4 className="font-semibold text-red-300">Fungible Assets</h4>
+                    </div>
+                    <p className="text-sm text-gray-300">
+                      Digital tokens where each unit is identical and interchangeable. 
+                      IKE Coin is fungible - every IKE has the same value and properties.
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Why Algorand */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="bg-gradient-to-br from-teal-500/10 to-green-500/10 border border-teal-500/20 rounded-2xl p-6"
+                >
+                  <h3 className="text-xl font-bold text-teal-300 mb-4 flex items-center space-x-2">
+                    <Shield className="h-6 w-6" />
+                    <span>Why We Chose Algorand</span>
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Zap className="h-4 w-4 text-yellow-400" />
+                        <span className="text-sm font-medium text-white">Lightning Fast</span>
+                      </div>
+                      <p className="text-sm text-gray-300 ml-6">
+                        Transactions finalize in under 3 seconds, making gratitude instant.
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Coins className="h-4 w-4 text-green-400" />
+                        <span className="text-sm font-medium text-white">Ultra Low Fees</span>
+                      </div>
+                      <p className="text-sm text-gray-300 ml-6">
+                        Costs less than $0.001 per transaction, keeping gratitude affordable.
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Globe className="h-4 w-4 text-blue-400" />
+                        <span className="text-sm font-medium text-white">Carbon Negative</span>
+                      </div>
+                      <p className="text-sm text-gray-300 ml-6">
+                        Environmentally sustainable blockchain that actually removes CO₂.
+                      </p>
+                    </div>
+                    <div className="space-y-3">
+                      <div className="flex items-center space-x-2">
+                        <Shield className="h-4 w-4 text-purple-400" />
+                        <span className="text-sm font-medium text-white">Bank-Grade Security</span>
+                      </div>
+                      <p className="text-sm text-gray-300 ml-6">
+                        Military-grade cryptography protects every transaction.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* IKE Coin Details */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="bg-gray-800 border border-gray-700 rounded-2xl p-6"
+                >
+                  <h4 className="text-lg font-bold text-white mb-4 flex items-center space-x-2">
+                    <div className="w-6 h-6 bg-yellow-500 rounded-full flex items-center justify-center">
+                      <span className="text-gray-900 font-bold text-xs">I</span>
+                    </div>
+                    <span>IKE Coin on Algorand</span>
+                  </h4>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">Asset ID:</span>
+                      <motion.a
+                        href="https://lora.algokit.io/mainnet/asset/309546018"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-teal-400 hover:text-teal-300 font-mono text-sm flex items-center space-x-1 transition-colors"
+                        whileHover={{ scale: 1.02 }}
+                      >
+                        <span>309546018</span>
+                        <ExternalLink className="h-3 w-3" />
+                      </motion.a>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">Blockchain:</span>
+                      <span className="text-white">Algorand Standard Asset (ASA)</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">Type:</span>
+                      <span className="text-white">Fungible Token</span>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Call to Action */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="text-center pt-4"
+                >
+                  <motion.button
+                    onClick={() => {
+                      setShowBlockchainModal(false);
+                      onGetStarted();
+                    }}
+                    className="bg-gradient-to-r from-blue-500 to-teal-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Start Using IKE Coin
                   </motion.button>
                 </motion.div>
               </div>
