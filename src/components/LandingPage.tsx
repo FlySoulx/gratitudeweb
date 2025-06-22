@@ -456,7 +456,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             </motion.div>
             <h3 className="text-2xl font-bold mb-3">2. Find & Tip</h3>
             <p className="text-gray-300 text-lg leading-relaxed">
-              Paste a URL or enter a creator's name to send your appreciation.
+              Paste wallet address, URL or name of person you wish to send your appreciation.
             </p>
           </motion.div>
 
