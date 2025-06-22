@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink, X, Brain, Sparkles } from 'lucide-react';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -13,6 +13,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
     minutes: 15,
     seconds: 57
   });
+  const [showScienceModal, setShowScienceModal] = useState(false);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -41,6 +42,27 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
 
     return () => clearInterval(timer);
   }, []);
+
+  // Close modal on escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setShowScienceModal(false);
+      }
+    };
+
+    if (showScienceModal) {
+      document.addEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.removeEventListener('keydown', handleEscape);
+      document.body.style.overflow = 'unset';
+    };
+  }, [showScienceModal]);
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
@@ -434,7 +456,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                     <ExternalLink className="h-3 w-3" />
                   </motion.a>
                 </li>
-                <li><a href="#" className="hover:text-white transition-colors">The Science of Gratitude</a></li>
+                <li>
+                  <motion.button
+                    onClick={() => setShowScienceModal(true)}
+                    className="hover:text-white transition-colors text-left"
+                    whileHover={{ x: 2 }}
+                  >
+                    The Science of Gratitude
+                  </motion.button>
+                </li>
                 <li><a href="#" className="hover:text-white transition-colors">Blockchain Technology</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Community Guidelines</a></li>
               </ul>
@@ -486,6 +516,145 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
           </div>
         </div>
       </motion.footer>
+
+      {/* Science of Gratitude Modal */}
+      <AnimatePresence>
+        {showScienceModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+            onClick={() => setShowScienceModal(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              className="bg-gray-900 border border-gray-700 rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between mb-8">
+                <div className="flex items-center space-x-3">
+                  <motion.div
+                    className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center"
+                    whileHover={{ rotate: 5 }}
+                  >
+                    <Brain className="h-6 w-6 text-white" />
+                  </motion.div>
+                  <h2 className="text-3xl font-bold text-white">The Science of Gratitude</h2>
+                </div>
+                <motion.button
+                  onClick={() => setShowScienceModal(false)}
+                  className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-xl flex items-center justify-center transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                >
+                  <X className="h-5 w-5 text-gray-400" />
+                </motion.button>
+              </div>
+
+              {/* Content */}
+              <div className="space-y-6">
+                {/* Main Content */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20 rounded-2xl p-6"
+                >
+                  <div className="flex items-start space-x-4">
+                    <motion.div
+                      className="flex-shrink-0 mt-1"
+                      animate={{ rotate: [0, 5, -5, 0] }}
+                      transition={{ duration: 3, repeat: Infinity }}
+                    >
+                      <Sparkles className="h-6 w-6 text-purple-400" />
+                    </motion.div>
+                    <div>
+                      <h3 className="text-xl font-bold text-purple-300 mb-4">Why Give Gratitude?</h3>
+                      <p className="text-gray-300 leading-relaxed text-lg">
+                        Beyond just being a kind gesture, expressing and witnessing gratitude has proven mental and emotional benefits. 
+                        It can boost neurotransmitters like <span className="text-purple-400 font-semibold">dopamine</span> and{' '}
+                        <span className="text-pink-400 font-semibold">serotonin</span>, helping to reduce feelings of anxiety and depression 
+                        and fostering a powerful sense of well-being and connection.
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+
+                {/* Benefits Grid */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="grid grid-cols-1 md:grid-cols-2 gap-4"
+                >
+                  <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                    <h4 className="font-semibold text-purple-300 mb-2">Mental Health Benefits</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• Reduces anxiety and depression</li>
+                      <li>• Increases life satisfaction</li>
+                      <li>• Improves sleep quality</li>
+                      <li>• Enhances self-esteem</li>
+                    </ul>
+                  </div>
+                  
+                  <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
+                    <h4 className="font-semibold text-pink-300 mb-2">Social Benefits</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
+                      <li>• Strengthens relationships</li>
+                      <li>• Increases empathy</li>
+                      <li>• Builds social connections</li>
+                      <li>• Promotes prosocial behavior</li>
+                    </ul>
+                  </div>
+                </motion.div>
+
+                {/* Neuroscience Insight */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="bg-gray-800 border border-gray-700 rounded-2xl p-6"
+                >
+                  <h4 className="text-lg font-bold text-white mb-3 flex items-center space-x-2">
+                    <Brain className="h-5 w-5 text-purple-400" />
+                    <span>The Neuroscience</span>
+                  </h4>
+                  <p className="text-gray-300 text-sm leading-relaxed">
+                    Research shows that gratitude activates the brain's reward system, particularly the ventral tegmental area 
+                    and nucleus accumbens. This activation releases dopamine, creating a positive feedback loop that encourages 
+                    more grateful thinking and behavior.
+                  </p>
+                </motion.div>
+
+                {/* Call to Action */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 }}
+                  className="text-center pt-4"
+                >
+                  <motion.button
+                    onClick={() => {
+                      setShowScienceModal(false);
+                      onGetStarted();
+                    }}
+                    className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Start Your Gratitude Journey
+                  </motion.button>
+                </motion.div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
