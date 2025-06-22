@@ -681,7 +681,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", damping: 25, stiffness: 300 }}
-              className="bg-gray-900 border border-gray-700 rounded-3xl p-8 max-w-3xl w-full max-h-[90vh] overflow-y-auto"
+              className="bg-gray-900 border border-gray-700 rounded-3xl p-8 max-w-4xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
@@ -724,11 +724,17 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                     </motion.div>
                     <div>
                       <h3 className="text-xl font-bold text-blue-300 mb-4">What is Web3?</h3>
-                      <p className="text-gray-300 leading-relaxed">
+                      <p className="text-gray-300 leading-relaxed mb-3">
                         Web3 represents the next evolution of the internet - a decentralized web where users own their data, 
                         digital assets, and interactions. Unlike traditional platforms that control your content and value, 
                         Web3 puts <span className="text-blue-400 font-semibold">you in control</span>.
                       </p>
+                      <div className="bg-blue-500/10 border border-blue-500/20 rounded-lg p-3">
+                        <p className="text-sm text-blue-200">
+                          <span className="font-semibold">Example:</span> The Gratitude Web is a Web3 application where your gratitude messages 
+                          and IKE Coins are truly yours, stored on the blockchain rather than controlled by a company.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </motion.div>
@@ -745,10 +751,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                       <Coins className="h-5 w-5 text-yellow-400" />
                       <h4 className="font-semibold text-yellow-300">Cryptocurrency</h4>
                     </div>
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-gray-300 mb-3">
                       Digital money that exists on blockchain networks. Unlike traditional currency, 
                       crypto is decentralized, transparent, and can be programmed with smart features.
                     </p>
+                    <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-2">
+                      <p className="text-xs text-yellow-200">
+                        <span className="font-semibold">Example:</span> IKE Coin is one type of cryptocurrency built specifically for expressing gratitude.
+                      </p>
+                    </div>
                   </div>
                   
                   <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
@@ -756,10 +767,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                       <Zap className="h-5 w-5 text-purple-400" />
                       <h4 className="font-semibold text-purple-300">Smart Contracts</h4>
                     </div>
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-gray-300 mb-3">
                       Self-executing contracts with terms directly written into code. They automatically 
                       execute when conditions are met, eliminating the need for intermediaries.
                     </p>
+                    <div className="bg-purple-500/10 border border-purple-500/20 rounded-lg p-2">
+                      <p className="text-xs text-purple-200">
+                        <span className="font-semibold">Example:</span> Our Promissory Links are an example of a smart contract that automatically releases IKE Coins when claimed.
+                      </p>
+                    </div>
                   </div>
 
                   <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
@@ -767,10 +783,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                       <Database className="h-5 w-5 text-green-400" />
                       <h4 className="font-semibold text-green-300">Blockchain</h4>
                     </div>
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-gray-300 mb-3">
                       A distributed ledger that records transactions across many computers. 
                       Once recorded, data cannot be altered, ensuring transparency and security.
                     </p>
+                    <div className="bg-green-500/10 border border-green-500/20 rounded-lg p-2">
+                      <p className="text-xs text-green-200">
+                        <span className="font-semibold">Example:</span> Algorand is an example of a blockchain that powers IKE Coin transactions.
+                      </p>
+                    </div>
                   </div>
 
                   <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-4">
@@ -778,10 +799,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                       <Heart className="h-5 w-5 text-red-400" />
                       <h4 className="font-semibold text-red-300">Fungible Assets</h4>
                     </div>
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-gray-300 mb-3">
                       Digital tokens where each unit is identical and interchangeable. 
                       IKE Coin is fungible - every IKE has the same value and properties.
                     </p>
+                    <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-2">
+                      <p className="text-xs text-red-200">
+                        <span className="font-semibold">Example:</span> IKE Coin is one type of fungible asset - each IKE is worth the same as any other IKE.
+                      </p>
+                    </div>
                   </div>
                 </motion.div>
 
@@ -870,6 +896,19 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                     <div className="flex items-center justify-between">
                       <span className="text-gray-400">Type:</span>
                       <span className="text-white">Fungible Token</span>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span className="text-gray-400">Explorer:</span>
+                      <motion.a
+                        href="https://lora.algokit.io/mainnet/asset/309546018"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-teal-400 hover:text-teal-300 text-sm flex items-center space-x-1 transition-colors"
+                        whileHover={{ scale: 1.02 }}
+                      >
+                        <span>View on Lora Explorer</span>
+                        <ExternalLink className="h-3 w-3" />
+                      </motion.a>
                     </div>
                   </div>
                 </motion.div>
