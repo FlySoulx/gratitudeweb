@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink, X, Brain, Sparkles, Shield, Zap, Globe, Link } from 'lucide-react';
+import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink, X, Brain, Sparkles, Shield, Zap, Globe, Link, Clock, Infinity } from 'lucide-react';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -220,6 +220,106 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             is to lower the barrier to entry, making it simple and inspiring for everyone to 
             participate in this new economy of goodwill.
           </p>
+        </div>
+      </motion.section>
+
+      {/* IKE: International Keepers of Excellence Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="py-20 px-6 max-w-6xl mx-auto"
+      >
+        <div className="bg-gradient-to-br from-purple-500/20 to-indigo-500/20 backdrop-blur-sm rounded-3xl p-12 border border-purple-500/30">
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center space-x-3 mb-6">
+              <motion.div
+                className="w-12 h-12 bg-gradient-to-r from-purple-500 to-indigo-500 rounded-full flex items-center justify-center"
+                animate={{ rotate: [0, 5, -5, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              >
+                <Infinity className="h-6 w-6 text-white" />
+              </motion.div>
+              <h2 className="text-4xl font-bold text-purple-300">IKE: International Keepers of Excellence</h2>
+            </div>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-purple-500/10 border border-purple-500/30 rounded-2xl p-8 mb-8"
+            >
+              <div className="flex items-start space-x-4">
+                <motion.div
+                  className="flex-shrink-0 mt-1"
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                >
+                  <Clock className="h-6 w-6 text-purple-400" />
+                </motion.div>
+                <div>
+                  <h3 className="text-2xl font-bold text-purple-300 mb-4">IKE is Forever</h3>
+                  <p className="text-gray-300 leading-relaxed text-lg">
+                    As International Keepers of Excellence, we understand that every expression of gratitude 
+                    becomes an eternal testament to human goodness. Each message, each transaction, each moment 
+                    of appreciation is permanently inscribed on the blockchain—an immutable record that transcends 
+                    time and space.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
+            >
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <h4 className="text-lg font-bold text-indigo-300 mb-3 flex items-center space-x-2">
+                  <Heart className="h-5 w-5" />
+                  <span>Mindful Expression</span>
+                </h4>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  Every word carries weight in the eternal ledger. We choose our expressions of gratitude 
+                  with intention, knowing they will inspire and uplift for generations to come.
+                </p>
+              </div>
+              
+              <div className="bg-gray-800/50 border border-gray-700 rounded-xl p-6">
+                <h4 className="text-lg font-bold text-purple-300 mb-3 flex items-center space-x-2">
+                  <Shield className="h-5 w-5" />
+                  <span>Excellence in Action</span>
+                </h4>
+                <p className="text-gray-300 text-sm leading-relaxed">
+                  As keepers of excellence, we demonstrate the highest standards in our interactions, 
+                  creating a legacy of thoughtfulness and genuine appreciation.
+                </p>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-center"
+            >
+              <blockquote className="text-xl italic text-purple-200 mb-6">
+                "In choosing our words with care and expressing gratitude with purpose, 
+                we become custodians of humanity's finest moments—forever preserved, 
+                forever inspiring, forever excellent."
+              </blockquote>
+              <div className="flex items-center justify-center space-x-2 text-purple-300">
+                <Infinity className="h-5 w-5" />
+                <span className="font-medium">Eternal. Immutable. Excellent.</span>
+                <Infinity className="h-5 w-5" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </motion.section>
 
