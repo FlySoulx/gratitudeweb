@@ -422,7 +422,18 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
             <div>
               <h3 className="font-semibold mb-4">Learn More</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About IKE Coin</a></li>
+                <li>
+                  <motion.a 
+                    href="https://ikecoins.com/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="hover:text-white transition-colors flex items-center space-x-1"
+                    whileHover={{ x: 2 }}
+                  >
+                    <span>Official IKE Coins Website</span>
+                    <ExternalLink className="h-3 w-3" />
+                  </motion.a>
+                </li>
                 <li><a href="#" className="hover:text-white transition-colors">The Science of Gratitude</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Blockchain Technology</a></li>
                 <li><a href="#" className="hover:text-white transition-colors">Community Guidelines</a></li>
@@ -450,7 +461,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
                   <Linkedin className="h-5 w-5" />
                 </motion.a>
                 <motion.a
-                  href="#"
+                  href="https://ikecoins.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 bg-gray-800 rounded-xl flex items-center justify-center hover:bg-teal-500 transition-colors"
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
