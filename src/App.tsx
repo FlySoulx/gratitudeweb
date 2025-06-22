@@ -25,7 +25,7 @@ function App() {
   const renderScreen = () => {
     switch (currentScreen) {
       case 'landing':
-        return <LandingPage onGetStarted={() => navigateToScreen('dashboard')} />;
+        return <LandingPage onGetStarted={() => navigateToScreen('dashboard')} onNavigate={navigateToScreen} />;
       case 'dashboard':
         return <Dashboard balance={userBalance} onNavigate={navigateToScreen} />;
       case 'send':
