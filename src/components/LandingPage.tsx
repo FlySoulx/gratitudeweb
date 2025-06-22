@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink } from 'lucide-react';
+import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink, ArrowLeft, Users, Shield, Microscope, Link as LinkIcon } from 'lucide-react';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -13,6 +13,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
     minutes: 15,
     seconds: 57
   });
+  const [currentPage, setCurrentPage] = useState<'main' | 'about' | 'science' | 'blockchain' | 'community'>('main');
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -42,7 +43,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
     return () => clearInterval(timer);
   }, []);
 
-  return (
+  const navigateToPage = (page: 'main' | 'about' | 'science' | 'blockchain' | 'community') => {
+    setCurrentPage(page);
+  };
+
+  const renderMainPage = () => (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
       <motion.header
@@ -68,8 +73,10 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
-          <a href="#mission" className="text-gray-300 hover:text-white transition-colors">The Mission</a>
-          <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">How it Works</a>
+          <button onClick={() => navigateToPage('about')} className="text-gray-300 hover:text-white transition-colors">About</button>
+          <button onClick={() => navigateToPage('science')} className="text-gray-300 hover:text-white transition-colors">Science</button>
+          <button onClick={() => navigateToPage('blockchain')} className="text-gray-300 hover:text-white transition-colors">Technology</button>
+          <button onClick={() => navigateToPage('community')} className="text-gray-300 hover:text-white transition-colors">Community</button>
           <motion.button
             onClick={onGetStarted}
             className="bg-teal-500 hover:bg-teal-600 px-4 py-2 rounded-lg font-medium transition-colors"
@@ -438,14 +445,42 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
               </p>
             </div>
 
-            {/* Links */}
+            {/* Learn More Links */}
             <div>
               <h3 className="font-semibold mb-4">Learn More</h3>
               <ul className="space-y-2 text-sm text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">About IKE Coin</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">The Science of Gratitude</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Blockchain Technology</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Community Guidelines</a></li>
+                <li>
+                  <button 
+                    onClick={() => navigateToPage('about')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    About IKE Coin
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => navigateToPage('science')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    The Science of Gratitude
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => navigateToPage('blockchain')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Blockchain Technology
+                  </button>
+                </li>
+                <li>
+                  <button 
+                    onClick={() => navigateToPage('community')} 
+                    className="hover:text-white transition-colors text-left"
+                  >
+                    Community Guidelines
+                  </button>
+                </li>
               </ul>
             </div>
 
@@ -504,6 +539,404 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
       </motion.footer>
     </div>
   );
+
+  const renderAboutPage = () => (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Header */}
+      <motion.header
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="flex items-center p-6 max-w-7xl mx-auto"
+      >
+        <motion.button
+          onClick={() => navigateToPage('main')}
+          className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors mr-6"
+          whileHover={{ x: -5 }}
+        >
+          <ArrowLeft className="h-5 w-5" />
+          <span>Back</span>
+        </motion.button>
+        <div className="flex items-center space-x-3">
+          <Coins className="h-8 w-8 text-yellow-400" />
+          <h1 className="text-2xl font-bold">About IKE Coin</h1>
+        </div>
+      </motion.header>
+
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-4xl mx-auto px-6 py-12"
+      >
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-12 border border-gray-700">
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-4 text-teal-400">Our Mission</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                To build a public record of human excellence by empowering anyone to give and receive gratitude seamlessly. 
+                IKE Coin represents more than just a digital currency—it's a movement to recognize and reward the good in our world.
+              </p>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-yellow-400">Tokenomics</h2>
+              <div className="space-y-4">
+                <p className="text-lg text-gray-300">
+                  <strong>Asset ID:</strong> <a href="https://allo.info/asset/309546018/token" target="_blank" className="text-teal-400 hover:underline">309546018</a>
+                </p>
+                <p className="text-lg text-gray-300">
+                  <strong>Blockchain:</strong> Algorand Standard Asset (ASA)
+                </p>
+                <p className="text-lg text-gray-300">
+                  <strong>Total Supply:</strong> 1,000,000 IKE
+                </p>
+                <p className="text-lg text-gray-300">
+                  <strong>Distribution:</strong> Community-driven through gratitude actions
+                </p>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-green-400">Why Algorand?</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                We chose Algorand for its speed, low transaction fees, scalability, and commitment to a carbon-negative footprint, 
+                making it the ideal foundation for a global gratitude economy. Every transaction is fast, affordable, and environmentally responsible.
+              </p>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-purple-400">The Vision</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Imagine a world where every act of kindness, every moment of excellence, and every expression of gratitude 
+                is permanently recorded and rewarded. IKE Coin makes this vision a reality, creating an eternal ledger of human goodness.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+
+  const renderSciencePage = () => (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Header */}
+      <motion.header
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="flex items-center p-6 max-w-7xl mx-auto"
+      >
+        <motion.button
+          onClick={() => navigateToPage('main')}
+          className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors mr-6"
+          whileHover={{ x: -5 }}
+        >
+          <ArrowLeft className="h-5 w-5" />
+          <span>Back</span>
+        </motion.button>
+        <div className="flex items-center space-x-3">
+          <Microscope className="h-8 w-8 text-green-400" />
+          <h1 className="text-2xl font-bold">The Science of Gratitude</h1>
+        </div>
+      </motion.header>
+
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-4xl mx-auto px-6 py-12"
+      >
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-12 border border-gray-700">
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-4 text-green-400">Why Gratitude Matters</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Beyond just being a kind gesture, expressing and witnessing gratitude has proven mental and emotional benefits. 
+                Scientific research shows that gratitude practices can boost neurotransmitters like dopamine and serotonin, 
+                helping to reduce feelings of anxiety and depression while fostering a powerful sense of well-being and connection.
+              </p>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-blue-400">Neurological Benefits</h2>
+              <ul className="space-y-4 text-lg text-gray-300">
+                <li className="flex items-start space-x-3">
+                  <span className="text-green-400 mt-1">•</span>
+                  <span><strong>Increased Dopamine:</strong> Gratitude activates the brain's reward system, creating feelings of pleasure and motivation.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-green-400 mt-1">•</span>
+                  <span><strong>Enhanced Serotonin:</strong> Regular gratitude practice boosts serotonin levels, improving mood and emotional regulation.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-green-400 mt-1">•</span>
+                  <span><strong>Reduced Cortisol:</strong> Gratitude helps lower stress hormones, promoting better physical and mental health.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-purple-400">Social Impact</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Gratitude is contagious. When we express appreciation, it creates a ripple effect that strengthens social bonds, 
+                builds trust, and encourages prosocial behavior. IKE Coin amplifies this effect by making gratitude visible, 
+                permanent, and valuable.
+              </p>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-yellow-400">Research Findings</h2>
+              <div className="space-y-4 text-lg text-gray-300">
+                <p>
+                  Studies from leading institutions like Harvard, UC Berkeley, and Stanford have consistently shown that:
+                </p>
+                <ul className="space-y-3 ml-6">
+                  <li>• People who practice gratitude report 25% higher happiness levels</li>
+                  <li>• Gratitude improves sleep quality and immune function</li>
+                  <li>• Grateful individuals have stronger relationships and social connections</li>
+                  <li>• Regular gratitude practice can increase life satisfaction by up to 25%</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+
+  const renderBlockchainPage = () => (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Header */}
+      <motion.header
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="flex items-center p-6 max-w-7xl mx-auto"
+      >
+        <motion.button
+          onClick={() => navigateToPage('main')}
+          className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors mr-6"
+          whileHover={{ x: -5 }}
+        >
+          <ArrowLeft className="h-5 w-5" />
+          <span>Back</span>
+        </motion.button>
+        <div className="flex items-center space-x-3">
+          <LinkIcon className="h-8 w-8 text-blue-400" />
+          <h1 className="text-2xl font-bold">Blockchain Technology</h1>
+        </div>
+      </motion.header>
+
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-4xl mx-auto px-6 py-12"
+      >
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-12 border border-gray-700">
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-4 text-blue-400">Why Blockchain?</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                Blockchain technology ensures that every expression of gratitude is permanent, transparent, and immutable. 
+                Your thanks become part of an eternal record that can never be lost, deleted, or manipulated.
+              </p>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-teal-400">Algorand Advantages</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-gray-700/50 p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-3 text-green-400">Speed</h3>
+                  <p className="text-gray-300">Transactions finalize in under 5 seconds, making gratitude instant.</p>
+                </div>
+                <div className="bg-gray-700/50 p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-3 text-yellow-400">Low Fees</h3>
+                  <p className="text-gray-300">Transaction costs are minimal, typically under $0.01.</p>
+                </div>
+                <div className="bg-gray-700/50 p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-3 text-purple-400">Scalable</h3>
+                  <p className="text-gray-300">Handles thousands of transactions per second globally.</p>
+                </div>
+                <div className="bg-gray-700/50 p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-3 text-blue-400">Carbon Negative</h3>
+                  <p className="text-gray-300">Environmentally responsible blockchain with negative carbon footprint.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-green-400">Security & Trust</h2>
+              <ul className="space-y-4 text-lg text-gray-300">
+                <li className="flex items-start space-x-3">
+                  <span className="text-green-400 mt-1">•</span>
+                  <span><strong>Immutable Records:</strong> Once recorded, gratitude messages cannot be altered or deleted.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-green-400 mt-1">•</span>
+                  <span><strong>Transparent:</strong> All public transactions are visible on the blockchain explorer.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-green-400 mt-1">•</span>
+                  <span><strong>Decentralized:</strong> No single entity controls the network or your data.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-green-400 mt-1">•</span>
+                  <span><strong>Private Options:</strong> Choose to keep personal messages encrypted while maintaining transaction transparency.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-purple-400">The Future of Gratitude</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                By leveraging blockchain technology, we're creating the world's first permanent, searchable, and valuable record 
+                of human appreciation. Future generations will be able to explore this digital monument to kindness and excellence, 
+                inspiring continued acts of gratitude across time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+
+  const renderCommunityPage = () => (
+    <div className="min-h-screen bg-gray-900 text-white">
+      {/* Header */}
+      <motion.header
+        initial={{ y: -50, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        className="flex items-center p-6 max-w-7xl mx-auto"
+      >
+        <motion.button
+          onClick={() => navigateToPage('main')}
+          className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors mr-6"
+          whileHover={{ x: -5 }}
+        >
+          <ArrowLeft className="h-5 w-5" />
+          <span>Back</span>
+        </motion.button>
+        <div className="flex items-center space-x-3">
+          <Users className="h-8 w-8 text-purple-400" />
+          <h1 className="text-2xl font-bold">Community Guidelines</h1>
+        </div>
+      </motion.header>
+
+      {/* Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-4xl mx-auto px-6 py-12"
+      >
+        <div className="bg-gray-800/50 backdrop-blur-sm rounded-3xl p-12 border border-gray-700">
+          <div className="space-y-8">
+            <div>
+              <h2 className="text-3xl font-bold mb-4 text-purple-400">Our Values</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                The Gratitude Web is built on principles of kindness, respect, and genuine appreciation. 
+                We're creating a positive space where excellence is recognized and gratitude flows freely.
+              </p>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-green-400">Community Standards</h2>
+              <div className="space-y-6">
+                <div className="bg-gray-700/50 p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-3 text-green-400">✓ Authentic Gratitude</h3>
+                  <p className="text-gray-300">Express genuine appreciation. Meaningful messages create lasting impact.</p>
+                </div>
+                <div className="bg-gray-700/50 p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-3 text-blue-400">✓ Respectful Communication</h3>
+                  <p className="text-gray-300">Treat all community members with kindness and respect, regardless of background.</p>
+                </div>
+                <div className="bg-gray-700/50 p-6 rounded-xl">
+                  <h3 className="text-xl font-bold mb-3 text-yellow-400">✓ Constructive Engagement</h3>
+                  <p className="text-gray-300">Focus on positive contributions that build up the community and celebrate excellence.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-red-400">What We Don't Allow</h2>
+              <ul className="space-y-4 text-lg text-gray-300">
+                <li className="flex items-start space-x-3">
+                  <span className="text-red-400 mt-1">✗</span>
+                  <span><strong>Spam or Abuse:</strong> Automated or repetitive messages that don't express genuine gratitude.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-red-400 mt-1">✗</span>
+                  <span><strong>Harassment:</strong> Any form of bullying, threats, or inappropriate behavior.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-red-400 mt-1">✗</span>
+                  <span><strong>Fraudulent Activity:</strong> Fake accounts, manipulation, or attempts to game the system.</span>
+                </li>
+                <li className="flex items-start space-x-3">
+                  <span className="text-red-400 mt-1">✗</span>
+                  <span><strong>Inappropriate Content:</strong> Offensive, illegal, or harmful material of any kind.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-teal-400">Privacy & Safety</h2>
+              <div className="space-y-4 text-lg text-gray-300">
+                <p>
+                  <strong>Your Privacy Matters:</strong> You control the visibility of your gratitude messages. 
+                  Choose between public recognition and private appreciation.
+                </p>
+                <p>
+                  <strong>Safe Environment:</strong> We actively monitor for abuse and have systems in place 
+                  to protect community members from harassment or spam.
+                </p>
+                <p>
+                  <strong>Data Security:</strong> Your personal information is protected, and blockchain 
+                  transactions are secured by cryptographic protocols.
+                </p>
+              </div>
+            </div>
+
+            <div className="border-t border-gray-700 pt-8">
+              <h2 className="text-3xl font-bold mb-4 text-yellow-400">Reporting & Support</h2>
+              <p className="text-lg text-gray-300 leading-relaxed">
+                If you encounter any issues or violations of these guidelines, please report them to our 
+                community team. We're committed to maintaining a positive environment where gratitude can flourish.
+              </p>
+              <div className="mt-6 flex flex-col sm:flex-row gap-4">
+                <motion.button
+                  className="bg-teal-500 hover:bg-teal-600 px-6 py-3 rounded-lg font-medium transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Report an Issue
+                </motion.button>
+                <motion.button
+                  className="bg-gray-700 hover:bg-gray-600 px-6 py-3 rounded-lg font-medium transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Contact Support
+                </motion.button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+
+  // Render the appropriate page based on current state
+  switch (currentPage) {
+    case 'about':
+      return renderAboutPage();
+    case 'science':
+      return renderSciencePage();
+    case 'blockchain':
+      return renderBlockchainPage();
+    case 'community':
+      return renderCommunityPage();
+    default:
+      return renderMainPage();
+  }
 };
 
 export default LandingPage;
