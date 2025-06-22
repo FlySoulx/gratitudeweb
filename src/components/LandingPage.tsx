@@ -582,7 +582,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted }) => {
               <h2 className="text-3xl font-bold mb-4 text-yellow-400">Tokenomics</h2>
               <div className="space-y-4">
                 <p className="text-lg text-gray-300">
-                  <strong>Asset ID:</strong> <a href="https://allo.info/asset/309546018/token" target="_blank" className="text-teal-400 hover:underline">309546018</a>
+                  <strong>Asset ID:</strong> <a href="https://allo.info/asset/309546018/token" target=\"_blank" className="text-teal-400 hover:underline">309546018</a>
                 </p>
                 <p className="text-lg text-gray-300">
                   <strong>Blockchain:</strong> Algorand Standard Asset (ASA)
