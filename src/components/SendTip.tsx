@@ -204,7 +204,7 @@ const SendTip: React.FC<SendTipProps> = ({ onBack, onSuccess }) => {
                   setRecipient(e.target.value);
                   if (showValidation) setShowValidation(false);
                 }}
-                placeholder="Enter Algorand address or NFD"
+                placeholder="Paste wallet address, URL or name of person you wish to send your appreciation"
                 className={`w-full bg-gray-900 border rounded-xl px-4 py-3 text-white placeholder-gray-400 focus:outline-none transition-colors ${
                   showValidation && recipient.trim() === ''
                     ? 'border-red-500 focus:border-red-400'
