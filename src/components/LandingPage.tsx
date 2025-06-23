@@ -141,9 +141,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             >
-              10K+
+              A New
             </motion.div>
-            <div className="text-gray-400 font-medium">Grateful Users</div>
+            <div className="text-gray-400 font-medium">Gratitude Economy</div>
           </div>
           <div className="text-center">
             <motion.div
@@ -151,9 +151,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
             >
-              1M+
+              Give Real
             </motion.div>
-            <div className="text-gray-400 font-medium">IKE Coins Earned</div>
+            <div className="text-gray-400 font-medium">Value</div>
           </div>
           <div className="text-center">
             <motion.div
@@ -161,9 +161,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               animate={{ scale: [1, 1.05, 1] }}
               transition={{ duration: 2, repeat: Infinity, delay: 1 }}
             >
-              500K+
+              Permanently
             </motion.div>
-            <div className="text-gray-400 font-medium">Gratitude Entries</div>
+            <div className="text-gray-400 font-medium">on Algorand</div>
           </div>
         </motion.div>
       </motion.section>
