@@ -88,7 +88,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
           <div className="inline-flex items-center space-x-2 bg-teal-500/20 backdrop-blur-sm rounded-full px-6 py-3 border border-teal-500/30 mb-8">
             <Coins className="h-5 w-5 text-yellow-400" />
             <span className="text-sm font-medium text-teal-300">
-              Introducing Web3 Gratitude Rewards
+              Introducing Web3 Gratitude Rewards from IKE Coin
             </span>
           </div>
         </motion.div>
