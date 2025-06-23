@@ -137,23 +137,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
         >
           <div className="text-center">
             <div className="mb-2">
-              <div className="text-lg text-gray-400 mb-1">A New</div>
-              <motion.div
-                className="text-3xl sm:text-4xl font-bold text-teal-400"
-                animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              >
-                Gratitude Economy
-              </motion.div>
-            </div>
-          </div>
-          <div className="text-center">
-            <div className="mb-2">
               <div className="text-lg text-gray-400 mb-1">Give Real</div>
               <motion.div
                 className="text-3xl sm:text-4xl font-bold text-yellow-400"
                 animate={{ scale: [1, 1.05, 1] }}
-                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+                transition={{ duration: 2, repeat: Infinity }}
               >
                 Value
               </motion.div>
@@ -161,13 +149,25 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
           </div>
           <div className="text-center">
             <div className="mb-2">
-              <div className="text-lg text-gray-400 mb-1">Permanently</div>
+              <div className="text-lg text-gray-400 mb-1">A New</div>
+              <motion.div
+                className="text-3xl sm:text-4xl font-bold text-teal-400"
+                animate={{ scale: [1, 1.05, 1] }}
+                transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
+              >
+                Gratitude Economy
+              </motion.div>
+            </div>
+          </div>
+          <div className="text-center">
+            <div className="mb-2">
+              <div className="text-lg text-gray-400 mb-1">Permanently on</div>
               <motion.div
                 className="text-3xl sm:text-4xl font-bold text-green-400"
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 2, repeat: Infinity, delay: 1 }}
               >
-                on Algorand
+                Algorand
               </motion.div>
             </div>
           </div>
