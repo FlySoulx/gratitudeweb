@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink, X, Brain, Sparkles, Shield, Zap, Globe, Link, Clock, Infinity } from 'lucide-react';
+import { Heart, Coins, Wallet, Search, Database, Twitter, Linkedin, ExternalLink, X, Brain, Sparkles, Shield, Zap, Globe, Link, Infinity } from 'lucide-react';
 
 interface LandingPageProps {
   onGetStarted: () => void;
@@ -8,42 +8,8 @@ interface LandingPageProps {
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) => {
-  const [timeLeft, setTimeLeft] = useState({
-    days: 12,
-    hours: 20,
-    minutes: 15,
-    seconds: 57
-  });
   const [showScienceModal, setShowScienceModal] = useState(false);
   const [showBlockchainModal, setShowBlockchainModal] = useState(false);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        let { days, hours, minutes, seconds } = prev;
-        
-        if (seconds > 0) {
-          seconds--;
-        } else if (minutes > 0) {
-          seconds = 59;
-          minutes--;
-        } else if (hours > 0) {
-          seconds = 59;
-          minutes = 59;
-          hours--;
-        } else if (days > 0) {
-          seconds = 59;
-          minutes = 59;
-          hours = 23;
-          days--;
-        }
-        
-        return { days, hours, minutes, seconds };
-      });
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
 
   // Close modal on escape key
   useEffect(() => {
@@ -257,7 +223,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ duration: 3, repeat: Infinity }}
                 >
-                  <Clock className="h-6 w-6 text-indigo-300" />
+                  <Infinity className="h-6 w-6 text-indigo-300" />
                 </motion.div>
                 <div>
                   <h3 className="text-2xl font-bold text-indigo-200 mb-4">IKE is Forever</h3>
@@ -322,91 +288,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             </motion.div>
           </div>
         </div>
-      </motion.section>
-
-      {/* Countdown Section */}
-      <motion.section
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        className="py-20 px-6 max-w-6xl mx-auto"
-      >
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm rounded-3xl p-12 text-center border border-blue-500/30"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
-            Help Us Set a World Record for Gratitude.
-          </h2>
-          
-          {/* Countdown Timer */}
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            whileInView={{ scale: 1, opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-5xl md:text-6xl font-bold text-blue-400 mb-8 font-mono"
-          >
-            <div className="flex items-center justify-center space-x-2 md:space-x-4">
-              <div className="flex flex-col items-center">
-                <motion.span
-                  key={timeLeft.days}
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gray-800/80 rounded-xl px-4 py-2"
-                >
-                  {timeLeft.days}d
-                </motion.span>
-              </div>
-              <div className="flex flex-col items-center">
-                <motion.span
-                  key={timeLeft.hours}
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gray-800/80 rounded-xl px-4 py-2"
-                >
-                  {timeLeft.hours}h
-                </motion.span>
-              </div>
-              <div className="flex flex-col items-center">
-                <motion.span
-                  key={timeLeft.minutes}
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gray-800/80 rounded-xl px-4 py-2"
-                >
-                  {timeLeft.minutes}m
-                </motion.span>
-              </div>
-              <div className="flex flex-col items-center">
-                <motion.span
-                  key={timeLeft.seconds}
-                  initial={{ y: -20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-gray-800/80 rounded-xl px-4 py-2"
-                >
-                  {timeLeft.seconds}s
-                </motion.span>
-              </div>
-            </div>
-          </motion.div>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="text-lg text-blue-200 max-w-2xl mx-auto leading-relaxed"
-          >
-            On the final day of the hackathon, we will attempt to send the most thank you's in a single minute. Let's make history together!
-          </motion.p>
-        </motion.div>
       </motion.section>
 
       {/* How It Works Section */}
