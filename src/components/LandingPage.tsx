@@ -174,6 +174,164 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
         </motion.div>
       </motion.section>
 
+      {/* IKE Coin Logo Section */}
+      <motion.section
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        className="py-20 px-6 max-w-6xl mx-auto"
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center"
+        >
+          {/* Animated IKE Coin Logo */}
+          <motion.div
+            className="relative mx-auto mb-12"
+            initial={{ scale: 0, rotate: -180 }}
+            whileInView={{ scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ 
+              duration: 1.2, 
+              type: "spring", 
+              stiffness: 100,
+              damping: 15
+            }}
+          >
+            {/* Outer glow ring */}
+            <motion.div
+              className="absolute inset-0 w-80 h-80 mx-auto"
+              animate={{ 
+                rotate: [0, 360],
+                scale: [1, 1.1, 1]
+              }}
+              transition={{ 
+                rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                scale: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+              }}
+            >
+              <div className="w-full h-full rounded-full bg-gradient-to-r from-yellow-400/20 via-yellow-500/30 to-yellow-600/20 blur-xl"></div>
+            </motion.div>
+
+            {/* Middle pulse ring */}
+            <motion.div
+              className="absolute inset-8 w-64 h-64 mx-auto"
+              animate={{ 
+                scale: [1, 1.2, 1],
+                opacity: [0.3, 0.6, 0.3]
+              }}
+              transition={{ 
+                duration: 3, 
+                repeat: Infinity, 
+                ease: "easeInOut",
+                delay: 0.5
+              }}
+            >
+              <div className="w-full h-full rounded-full bg-gradient-to-r from-yellow-300/40 to-yellow-500/40 blur-lg"></div>
+            </motion.div>
+
+            {/* Main logo container */}
+            <motion.div
+              className="relative w-64 h-64 mx-auto"
+              whileHover={{ 
+                scale: 1.05,
+                rotate: [0, 5, -5, 0],
+                transition: { 
+                  scale: { duration: 0.3 },
+                  rotate: { duration: 0.6, repeat: 2 }
+                }
+              }}
+            >
+              {/* Logo image */}
+              <motion.img
+                src="/Ikecoin_540px.png"
+                alt="IKE Coin Logo"
+                className="w-full h-full object-contain drop-shadow-2xl"
+                animate={{ 
+                  rotateY: [0, 360],
+                }}
+                transition={{ 
+                  duration: 8, 
+                  repeat: Infinity, 
+                  ease: "linear" 
+                }}
+              />
+
+              {/* Floating particles */}
+              {[...Array(6)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-2 h-2 bg-yellow-400 rounded-full"
+                  style={{
+                    top: `${20 + Math.sin(i * 60 * Math.PI / 180) * 40}%`,
+                    left: `${50 + Math.cos(i * 60 * Math.PI / 180) * 40}%`,
+                  }}
+                  animate={{
+                    y: [0, -20, 0],
+                    opacity: [0.4, 1, 0.4],
+                    scale: [0.8, 1.2, 0.8]
+                  }}
+                  transition={{
+                    duration: 2 + i * 0.3,
+                    repeat: Infinity,
+                    delay: i * 0.2,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </motion.div>
+
+            {/* Inner sparkle effect */}
+            <motion.div
+              className="absolute inset-16 w-32 h-32 mx-auto"
+              animate={{ 
+                rotate: [0, -360],
+                scale: [0.8, 1.1, 0.8]
+              }}
+              transition={{ 
+                rotate: { duration: 15, repeat: Infinity, ease: "linear" },
+                scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+              }}
+            >
+              {[...Array(4)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white rounded-full"
+                  style={{
+                    top: `${50 + Math.sin(i * 90 * Math.PI / 180) * 30}%`,
+                    left: `${50 + Math.cos(i * 90 * Math.PI / 180) * 30}%`,
+                  }}
+                  animate={{
+                    scale: [0, 1, 0],
+                    opacity: [0, 1, 0]
+                  }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Infinity,
+                    delay: i * 0.4,
+                    ease: "easeInOut"
+                  }}
+                />
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Logo subtitle */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.8 }}
+            className="text-center"
+          >
+            <h3 className="text-2xl font-bold text-yellow-400 mb-2">IKE COIN</h3>
+            <p className="text-gray-400 text-lg">International Keeper of Excellence</p>
+          </motion.div>
+        </motion.div>
+      </motion.section>
+
       {/* Mission Section */}
       <motion.section
         id="mission"
