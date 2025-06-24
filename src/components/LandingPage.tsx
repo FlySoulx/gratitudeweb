@@ -205,7 +205,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                   <div className="font-medium">Earn Value</div>
                   <div className="text-sm text-gray-400">Receive IKE for excellence</div>
                 </div>
-              </div>
+              </motion.div>
             </div>
           </motion.section>
 
