@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Coins, ArrowRight, Sparkles, Users, Star, Quote, TrendingUp, Shield, Zap, Award, UserPlus, PenTool, Gift, Twitter, Github, Linkedin, Mail, ExternalLink, Bell } from 'lucide-react';
+import { Heart, Coins, ArrowRight, Sparkles, Users, Star, Quote, TrendingUp, Shield, Zap, Award, UserPlus, PenTool, Gift, Twitter, Github, Linkedin, Mail, ExternalLink, Bell, MessageCircle, Trophy, Smartphone } from 'lucide-react';
 import { Screen } from '../App';
 
 interface LandingPageProps {
@@ -46,7 +46,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
       gradient: 'from-primary-600 to-gratitude-500'
     },
     {
-      icon: Bell,
+      icon: Smartphone,
       title: 'PWA Experience',
       description: 'Access your gratitude practice anywhere with our progressive web app. Works seamlessly across all devices.',
       color: 'wellness',
@@ -133,7 +133,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
 
   const communityStats = [
     { icon: Users, label: 'Active Members', value: '10,000+' },
-    { icon: Heart, label: 'Daily Posts', value: '500+' },
+    { icon: MessageCircle, label: 'Daily Posts', value: '500+' },
     { icon: Heart, label: 'Gratitudes Shared', value: '1M+' },
     { icon: Star, label: 'Average Rating', value: '4.9' }
   ];
@@ -183,7 +183,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
     <div className="min-h-screen bg-gradient-to-br from-teal-200 via-teal-100 to-cyan-200">
       {/* Side Panels with Mobile PWA Container */}
       <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="max-w-sm w-full bg-gray-900 text-white shadow-2xl overflow-hidden h-screen">
+        <div className="max-w-sm w-full bg-gray-900 text-white shadow-2xl overflow-hidden h-screen overflow-y-auto">
           {/* Header */}
           <motion.header
             initial={{ opacity: 0, y: -20 }}
@@ -274,7 +274,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               </motion.button>
             </motion.div>
 
-            {/* Stats */}
+            {/* Stats - Updated as requested */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -282,16 +282,16 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               className="grid grid-cols-3 gap-4"
             >
               <div className="text-center">
-                <div className="text-2xl font-bold text-teal-400 mb-1">10K+</div>
+                <div className="text-2xl font-bold text-teal-400 mb-1">Grateful</div>
                 <div className="text-xs text-gray-400">Users</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-yellow-400 mb-1">1M+</div>
-                <div className="text-xs text-gray-400">IKE Earned</div>
+                <div className="text-2xl font-bold text-yellow-400 mb-1">IKE</div>
+                <div className="text-xs text-gray-400">Earned</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-green-400 mb-1">500K+</div>
-                <div className="text-xs text-gray-400">Gratitudes</div>
+                <div className="text-2xl font-bold text-green-400 mb-1">Excellence</div>
+                <div className="text-xs text-gray-400">Recognized</div>
               </div>
             </motion.div>
           </motion.section>
@@ -320,7 +320,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             </motion.div>
           </motion.section>
 
-          {/* Features Preview */}
+          {/* How It Works Section */}
           <motion.section
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -330,55 +330,24 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             <h3 className="text-xl font-bold mb-6 text-center">How It Works</h3>
             
             <div className="space-y-4">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="bg-gray-800 border border-gray-700 rounded-xl p-4 flex items-center space-x-4"
-              >
-                <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">
-                  1
-                </div>
-                <div>
-                  <div className="font-medium text-sm">Give Real Value</div>
-                  <div className="text-xs text-gray-400">Tip creators with IKE Coins</div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-gray-800 border border-gray-700 rounded-xl p-4 flex items-center space-x-4"
-              >
-                <div className="w-10 h-10 bg-yellow-500 rounded-full flex items-center justify-center text-gray-900 font-bold">
-                  2
-                </div>
-                <div>
-                  <div className="font-medium text-sm">A New Gratitude Economy</div>
-                  <div className="text-xs text-gray-400">Create permanent appreciation</div>
-                </div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="bg-gray-800 border border-gray-700 rounded-xl p-4 flex items-center space-x-4"
-              >
-                <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
-                  3
-                </div>
-                <div>
-                  <div className="font-medium text-sm">
-                    <span className="text-gray-400">Permanently on</span>{' '}
-                    <span className="text-green-400">Algorand</span>
+              {steps.map((step, index) => (
+                <motion.div
+                  key={step.title}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gray-800 border border-gray-700 rounded-xl p-4 flex items-center space-x-4"
+                >
+                  <div className="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center text-white font-bold">
+                    {step.step}
                   </div>
-                  <div className="text-xs text-gray-400">Receive IKE for excellence</div>
-                </div>
-              </motion.div>
+                  <div>
+                    <div className="font-medium text-sm">{step.title}</div>
+                    <div className="text-xs text-gray-400">{step.description}</div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.section>
 
@@ -389,9 +358,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             viewport={{ once: true }}
             className="px-6 py-8"
           >
-            <h3 className="text-xl font-bold mb-6 text-center">Features</h3>
+            <h3 className="text-xl font-bold mb-6 text-center">Everything You Need for Mindful Living</h3>
             <div className="space-y-4">
-              {features.slice(0, 3).map((feature, index) => (
+              {features.map((feature, index) => (
                 <motion.div
                   key={feature.title}
                   initial={{ opacity: 0, y: 20 }}
@@ -412,15 +381,15 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             </div>
           </motion.section>
 
-          {/* Community Stats */}
+          {/* Community Section */}
           <motion.section
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             className="px-6 py-8"
           >
-            <h3 className="text-xl font-bold mb-6 text-center">Community</h3>
-            <div className="grid grid-cols-2 gap-4">
+            <h3 className="text-xl font-bold mb-6 text-center">Join Our Grateful Community</h3>
+            <div className="grid grid-cols-2 gap-4 mb-6">
               {communityStats.map((stat, index) => (
                 <motion.div
                   key={stat.label}
@@ -436,6 +405,28 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                 </motion.div>
               ))}
             </div>
+            
+            {/* Community CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="bg-gradient-to-r from-teal-500/20 to-blue-500/20 border border-teal-500/30 rounded-xl p-4 text-center"
+            >
+              <h4 className="font-bold mb-2">Ready to Start Your Gratitude Journey?</h4>
+              <p className="text-xs text-gray-400 mb-4">
+                Join our thriving community of grateful individuals and start earning IKE Coins 
+                for your mindful practices today.
+              </p>
+              <motion.button
+                onClick={onGetStarted}
+                className="w-full bg-teal-500 hover:bg-teal-600 py-3 rounded-full font-semibold transition-colors"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Join the Community
+              </motion.button>
+            </motion.div>
           </motion.section>
 
           {/* IKE Coin Section */}
@@ -448,11 +439,33 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             <div className="bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-2xl p-6">
               <div className="flex items-center space-x-3 mb-4">
                 <Coins className="h-6 w-6 text-yellow-400" />
-                <h3 className="text-xl font-bold">IKE Coin</h3>
+                <h3 className="text-xl font-bold">The Currency of Gratitude</h3>
               </div>
               <p className="text-gray-300 text-sm mb-4">
-                The currency of gratitude, powering the entire ecosystem with real value.
+                IKE Coin powers the entire Gratitude Web ecosystem, rewarding mindful practices 
+                and creating real value from your daily gratitude journey.
               </p>
+              
+              {/* Coin Features */}
+              <div className="space-y-3 mb-4">
+                {coinFeatures.map((feature, index) => (
+                  <motion.div
+                    key={feature.title}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-gray-800/50 rounded-xl p-3 flex items-start space-x-3"
+                  >
+                    <feature.icon className="h-4 w-4 text-yellow-400 flex-shrink-0 mt-0.5" />
+                    <div>
+                      <h5 className="font-medium text-xs text-white mb-1">{feature.title}</h5>
+                      <p className="text-xs text-gray-400">{feature.description}</p>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+              
               <div className="grid grid-cols-2 gap-3">
                 {stats.slice(0, 2).map((stat, index) => (
                   <div key={stat.label} className="bg-gray-800/50 rounded-xl p-3 text-center">
@@ -474,9 +487,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             viewport={{ once: true }}
             className="px-6 py-8"
           >
-            <h3 className="text-xl font-bold mb-6 text-center">What Users Say</h3>
+            <h3 className="text-xl font-bold mb-6 text-center">What Our Community Says</h3>
             <div className="space-y-4">
-              {testimonials.slice(0, 2).map((testimonial, index) => (
+              {testimonials.map((testimonial, index) => (
                 <motion.div
                   key={testimonial.name}
                   initial={{ opacity: 0, y: 20 }}
@@ -489,19 +502,55 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                   <p className="text-gray-300 text-sm mb-3 leading-relaxed">
                     "{testimonial.content}"
                   </p>
-                  <div className="flex items-center space-x-3">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-8 h-8 rounded-full object-cover"
-                    />
-                    <div>
-                      <div className="font-medium text-sm text-white">{testimonial.name}</div>
-                      <div className="text-xs text-gray-400">{testimonial.role}</div>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-3">
+                      <img
+                        src={testimonial.avatar}
+                        alt={testimonial.name}
+                        className="w-8 h-8 rounded-full object-cover"
+                      />
+                      <div>
+                        <div className="font-medium text-sm text-white">{testimonial.name}</div>
+                        <div className="text-xs text-gray-400">{testimonial.role}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-2 text-xs">
+                      <span className="text-yellow-400 font-bold">{testimonial.coins} IKE</span>
+                      <span className="text-gray-400">•</span>
+                      <span className="text-teal-400">{testimonial.streak} days</span>
                     </div>
                   </div>
                 </motion.div>
               ))}
+            </div>
+          </motion.section>
+
+          {/* Newsletter Section */}
+          <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="px-6 py-8"
+          >
+            <div className="bg-gray-800 border border-gray-700 rounded-2xl p-6">
+              <h3 className="text-lg font-bold mb-2">Stay Updated</h3>
+              <p className="text-gray-400 text-sm mb-4">
+                Get the latest updates on IKE Coin, new features, and community highlights.
+              </p>
+              <div className="space-y-3">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="w-full px-4 py-3 bg-gray-900 border border-gray-600 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-teal-500 transition-colors text-sm"
+                />
+                <motion.button
+                  className="w-full bg-gradient-to-r from-teal-500 to-blue-500 py-3 rounded-xl font-semibold text-sm"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  Subscribe
+                </motion.button>
+              </div>
             </div>
           </motion.section>
 
@@ -518,9 +567,14 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               viewport={{ once: true }}
               className="bg-gradient-to-r from-purple-500/20 to-pink-500/20 border border-purple-500/30 rounded-2xl p-6 text-center"
             >
-              <h3 className="text-lg font-bold mb-3">Ready to Start?</h3>
-              <p className="text-gray-400 text-sm mb-6">
-                Join thousands building the future of gratitude
+              <div className="flex items-center justify-center space-x-2 mb-3">
+                <Star className="h-5 w-5 text-purple-400" />
+                <h3 className="text-lg font-bold text-purple-300">Together We Build Excellence</h3>
+                <Star className="h-5 w-5 text-purple-400" />
+              </div>
+              <p className="text-purple-200 text-sm mb-6 leading-relaxed">
+                Join thousands building the future of gratitude. Start earning IKE Coins 
+                for your mindful practices and help create a world where appreciation has real value.
               </p>
               <motion.button
                 onClick={onGetStarted}
@@ -541,23 +595,69 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
             viewport={{ once: true }}
             className="px-6 py-8 border-t border-gray-800"
           >
-            <div className="flex items-center justify-center space-x-6 text-sm text-gray-400">
-              <motion.button
-                onClick={() => onNavigate('community-guidelines')}
-                className="hover:text-white transition-colors"
-                whileHover={{ scale: 1.05 }}
-              >
-                Guidelines
-              </motion.button>
-              <button className="hover:text-white transition-colors">
-                Privacy
-              </button>
-              <button className="hover:text-white transition-colors">
-                Terms
-              </button>
+            {/* Footer Links Grid */}
+            <div className="grid grid-cols-2 gap-6 mb-6">
+              {Object.entries(footerLinks).map(([category, links]) => (
+                <div key={category}>
+                  <h4 className="font-semibold text-sm mb-3 text-white">{category}</h4>
+                  <ul className="space-y-2">
+                    {links.slice(0, 3).map((link) => (
+                      <li key={link.name}>
+                        <button className="text-xs text-gray-400 hover:text-white transition-colors flex items-center">
+                          <span>{link.name}</span>
+                          {link.external && (
+                            <ExternalLink className="h-3 w-3 ml-1" />
+                          )}
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
-            <div className="text-center text-xs text-gray-500 mt-4">
-              © 2025 The Gratitude Web
+
+            {/* Social Links */}
+            <div className="flex items-center justify-center space-x-4 mb-6">
+              {socialLinks.map((social) => (
+                <motion.button
+                  key={social.name}
+                  className="w-8 h-8 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-teal-600 transition-all duration-300"
+                  whileHover={{ scale: 1.1, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <social.icon className="h-4 w-4 text-gray-400 hover:text-white transition-colors duration-300" />
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Footer Bottom */}
+            <div className="flex flex-col items-center space-y-4">
+              <div className="flex items-center justify-center space-x-6 text-sm text-gray-400">
+                <motion.button
+                  onClick={() => onNavigate('community-guidelines')}
+                  className="hover:text-white transition-colors"
+                  whileHover={{ scale: 1.05 }}
+                >
+                  Guidelines
+                </motion.button>
+                <button className="hover:text-white transition-colors">
+                  Privacy
+                </button>
+                <button className="hover:text-white transition-colors">
+                  Terms
+                </button>
+              </div>
+              
+              <div className="text-center">
+                <div className="text-xs text-gray-500 mb-2">
+                  © 2025 Gratitude Web. All rights reserved.
+                </div>
+                <div className="flex items-center justify-center space-x-2 text-xs text-gray-400">
+                  <span>Made with</span>
+                  <Heart className="h-3 w-3 text-red-500 fill-current animate-pulse" />
+                  <span>for mindful living</span>
+                </div>
+              </div>
             </div>
           </motion.footer>
         </div>
