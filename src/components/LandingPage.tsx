@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Coins, ArrowRight, Sparkles } from 'lucide-react';
+import { Heart, Coins, ArrowRight, Sparkles, Users, Star, Quote, TrendingUp, Shield, Zap, Award, UserPlus, PenTool, Gift, Twitter, Github, Linkedin, Mail, ExternalLink, Bell } from 'lucide-react';
 import { Screen } from '../App';
 
 interface LandingPageProps {
@@ -9,6 +9,176 @@ interface LandingPageProps {
 }
 
 const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) => {
+  const features = [
+    {
+      icon: Heart,
+      title: 'Daily Gratitude Practice',
+      description: 'Build a sustainable gratitude habit with guided prompts, mood tracking, and personalized insights to transform your mindset.',
+      color: 'primary',
+      gradient: 'from-primary-500 to-primary-600'
+    },
+    {
+      icon: Coins,
+      title: 'Earn IKE Coins',
+      description: 'Get rewarded for your gratitude practice. Earn IKE Coins for daily entries, consistency streaks, and community engagement.',
+      color: 'gratitude',
+      gradient: 'from-gratitude-500 to-gratitude-600'
+    },
+    {
+      icon: Users,
+      title: 'Grateful Community',
+      description: 'Connect with like-minded individuals, share your gratitude journey, and inspire others in our supportive community.',
+      color: 'wellness',
+      gradient: 'from-wellness-500 to-wellness-600'
+    },
+    {
+      icon: Zap,
+      title: 'Instant Rewards',
+      description: 'Redeem your IKE Coins for exclusive content, wellness products, and premium features within our ecosystem.',
+      color: 'earth',
+      gradient: 'from-earth-500 to-earth-600'
+    },
+    {
+      icon: Award,
+      title: 'Achievement System',
+      description: 'Unlock badges, climb leaderboards, and celebrate milestones as you progress on your gratitude journey.',
+      color: 'primary',
+      gradient: 'from-primary-600 to-gratitude-500'
+    },
+    {
+      icon: Bell,
+      title: 'PWA Experience',
+      description: 'Access your gratitude practice anywhere with our progressive web app. Works seamlessly across all devices.',
+      color: 'wellness',
+      gradient: 'from-wellness-600 to-primary-500'
+    }
+  ];
+
+  const steps = [
+    {
+      icon: UserPlus,
+      title: 'Join Our Community',
+      description: 'Create your account and connect your wallet to start your gratitude journey with IKE Coin integration.',
+      step: '01'
+    },
+    {
+      icon: PenTool,
+      title: 'Practice Daily Gratitude',
+      description: 'Write daily gratitude entries, track your mood, and build a consistent mindfulness practice.',
+      step: '02'
+    },
+    {
+      icon: Coins,
+      title: 'Earn IKE Coins',
+      description: 'Get rewarded with IKE Coins for your consistency, community engagement, and mindful contributions.',
+      step: '03'
+    },
+    {
+      icon: Gift,
+      title: 'Redeem & Share',
+      description: 'Use your earned coins for premium features, wellness products, or share with other community members.',
+      step: '04'
+    }
+  ];
+
+  const testimonials = [
+    {
+      name: 'Sarah Chen',
+      role: 'Mindfulness Coach',
+      avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+      content: 'The Gratitude Web has transformed my daily practice. Earning IKE Coins makes gratitude feel even more rewarding!',
+      coins: 1250,
+      streak: 45
+    },
+    {
+      name: 'Marcus Johnson',
+      role: 'Mental Health Advocate',
+      avatar: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+      content: 'I love how this platform combines mindfulness with real value. The community support is incredible.',
+      coins: 980,
+      streak: 32
+    },
+    {
+      name: 'Elena Rodriguez',
+      role: 'Wellness Enthusiast',
+      avatar: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
+      content: 'The daily prompts and community engagement have helped me build a consistent gratitude practice.',
+      coins: 1560,
+      streak: 67
+    }
+  ];
+
+  const coinFeatures = [
+    {
+      icon: TrendingUp,
+      title: 'Deflationary Tokenomics',
+      description: 'Limited supply with burn mechanisms to maintain value appreciation over time.'
+    },
+    {
+      icon: Shield,
+      title: 'Secure & Transparent',
+      description: 'Built on blockchain technology ensuring complete transparency and security.'
+    },
+    {
+      icon: Users,
+      title: 'Community Governed',
+      description: 'Holders participate in governance decisions shaping the future of the platform.'
+    },
+    {
+      icon: Zap,
+      title: 'Instant Transactions',
+      description: 'Fast, low-cost transactions for seamless user experience and rewards.'
+    }
+  ];
+
+  const communityStats = [
+    { icon: Users, label: 'Active Members', value: '10,000+' },
+    { icon: Heart, label: 'Daily Posts', value: '500+' },
+    { icon: Heart, label: 'Gratitudes Shared', value: '1M+' },
+    { icon: Star, label: 'Average Rating', value: '4.9' }
+  ];
+
+  const stats = [
+    { label: 'Total Supply', value: '1,000,000', suffix: 'IKE' },
+    { label: 'Circulating Supply', value: '650,000', suffix: 'IKE' },
+    { label: 'Holders', value: '10,000+', suffix: '' },
+    { label: 'Daily Volume', value: '$50K+', suffix: '' }
+  ];
+
+  const footerLinks = {
+    Product: [
+      { name: 'Features', href: '#features' },
+      { name: 'How It Works', href: '#how-it-works' },
+      { name: 'Pricing', href: '#pricing' },
+      { name: 'Roadmap', href: '#roadmap' }
+    ],
+    Community: [
+      { name: 'Discord', href: '#', external: true },
+      { name: 'Telegram', href: '#', external: true },
+      { name: 'Blog', href: '#', external: true },
+      { name: 'Newsletter', href: '#newsletter' }
+    ],
+    Resources: [
+      { name: 'Documentation', href: '#', external: true },
+      { name: 'API Reference', href: '#', external: true },
+      { name: 'Help Center', href: '#support' },
+      { name: 'Contact Us', href: '#contact' }
+    ],
+    Legal: [
+      { name: 'Privacy Policy', href: '#privacy' },
+      { name: 'Terms of Service', href: '#terms' },
+      { name: 'Cookie Policy', href: '#cookies' },
+      { name: 'Security', href: '#security' }
+    ]
+  };
+
+  const socialLinks = [
+    { icon: Twitter, href: '#', name: 'Twitter' },
+    { icon: Github, href: '#', name: 'GitHub' },
+    { icon: Linkedin, href: '#', name: 'LinkedIn' },
+    { icon: Mail, href: '#', name: 'Email' }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-200 via-teal-100 to-cyan-200">
       {/* Side Panels with Mobile PWA Container */}
@@ -209,6 +379,129 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                   <div className="text-xs text-gray-400">Receive IKE for excellence</div>
                 </div>
               </motion.div>
+            </div>
+          </motion.section>
+
+          {/* Features Section */}
+          <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="px-6 py-8"
+          >
+            <h3 className="text-xl font-bold mb-6 text-center">Features</h3>
+            <div className="space-y-4">
+              {features.slice(0, 3).map((feature, index) => (
+                <motion.div
+                  key={feature.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gray-800 border border-gray-700 rounded-xl p-4"
+                >
+                  <div className="flex items-center space-x-3 mb-2">
+                    <feature.icon className="h-5 w-5 text-teal-400" />
+                    <h4 className="font-medium text-sm">{feature.title}</h4>
+                  </div>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    {feature.description}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* Community Stats */}
+          <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="px-6 py-8"
+          >
+            <h3 className="text-xl font-bold mb-6 text-center">Community</h3>
+            <div className="grid grid-cols-2 gap-4">
+              {communityStats.map((stat, index) => (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gray-800 border border-gray-700 rounded-xl p-4 text-center"
+                >
+                  <stat.icon className="h-6 w-6 text-teal-400 mx-auto mb-2" />
+                  <div className="text-lg font-bold text-white mb-1">{stat.value}</div>
+                  <div className="text-xs text-gray-400">{stat.label}</div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.section>
+
+          {/* IKE Coin Section */}
+          <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="px-6 py-8"
+          >
+            <div className="bg-gradient-to-br from-yellow-500/20 to-orange-500/20 border border-yellow-500/30 rounded-2xl p-6">
+              <div className="flex items-center space-x-3 mb-4">
+                <Coins className="h-6 w-6 text-yellow-400" />
+                <h3 className="text-xl font-bold">IKE Coin</h3>
+              </div>
+              <p className="text-gray-300 text-sm mb-4">
+                The currency of gratitude, powering the entire ecosystem with real value.
+              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {stats.slice(0, 2).map((stat, index) => (
+                  <div key={stat.label} className="bg-gray-800/50 rounded-xl p-3 text-center">
+                    <div className="text-lg font-bold text-yellow-400 mb-1">
+                      {stat.value}
+                      <span className="text-sm">{stat.suffix}</span>
+                    </div>
+                    <div className="text-xs text-gray-400">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.section>
+
+          {/* Testimonials */}
+          <motion.section
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="px-6 py-8"
+          >
+            <h3 className="text-xl font-bold mb-6 text-center">What Users Say</h3>
+            <div className="space-y-4">
+              {testimonials.slice(0, 2).map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="bg-gray-800 border border-gray-700 rounded-xl p-4"
+                >
+                  <Quote className="h-4 w-4 text-teal-400 mb-2" />
+                  <p className="text-gray-300 text-sm mb-3 leading-relaxed">
+                    "{testimonial.content}"
+                  </p>
+                  <div className="flex items-center space-x-3">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-8 h-8 rounded-full object-cover"
+                    />
+                    <div>
+                      <div className="font-medium text-sm text-white">{testimonial.name}</div>
+                      <div className="text-xs text-gray-400">{testimonial.role}</div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.section>
 
