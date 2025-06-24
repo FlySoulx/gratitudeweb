@@ -13,7 +13,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
     <div className="min-h-screen bg-gradient-to-br from-teal-200 via-teal-100 to-cyan-200">
       {/* Side Panels with Mobile PWA Container */}
       <div className="min-h-screen flex items-center justify-center p-4">
-        <div className="max-w-sm w-full bg-gray-900 text-white rounded-3xl shadow-2xl overflow-hidden border border-teal-300/30">
+        <div className="max-w-sm w-full bg-gray-900 text-white shadow-2xl overflow-hidden h-screen">
           {/* Header */}
           <motion.header
             initial={{ opacity: 0, y: -20 }}
@@ -51,11 +51,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.3 }}
-              className="inline-flex items-center space-x-2 bg-teal-500/20 border border-teal-500/30 rounded-full px-4 py-2 mb-6"
+              className="inline-flex items-center space-x-2 bg-teal-500/20 border border-teal-500/30 rounded-full px-3 py-1.5 mb-6"
             >
-              <Coins className="h-4 w-4 text-teal-400" />
-              <span className="text-sm font-medium text-teal-300">
-                Introducing Web3 Gratitude Rewards from IKE Coin
+              <Coins className="h-3 w-3 text-yellow-400" />
+              <span className="text-xs font-medium text-teal-300">
+                Web3 Gratitude Rewards
               </span>
             </motion.div>
 
@@ -74,7 +74,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-gray-400 mb-8 leading-relaxed"
+              className="text-gray-400 mb-8 leading-relaxed text-sm"
             >
               The World's First Gratitude Coin. Tip any creator, website, or person to build a public record of human excellence.
             </motion.p>
@@ -112,16 +112,16 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
               className="grid grid-cols-3 gap-4"
             >
               <div className="text-center">
-                <div className="text-sm text-gray-400 mb-1">Give Real</div>
-                <div className="text-lg font-bold text-teal-400">Value</div>
+                <div className="text-2xl font-bold text-teal-400 mb-1">10K+</div>
+                <div className="text-xs text-gray-400">Users</div>
               </div>
               <div className="text-center">
-                <div className="text-sm text-gray-400 mb-1">A New</div>
-                <div className="text-lg font-bold text-yellow-400">Gratitude Economy</div>
+                <div className="text-2xl font-bold text-yellow-400 mb-1">1M+</div>
+                <div className="text-xs text-gray-400">IKE Earned</div>
               </div>
               <div className="text-center">
-                <div className="text-sm text-gray-400 mb-1">Permanently on</div>
-                <div className="text-lg font-bold text-green-400">Algorand</div>
+                <div className="text-2xl font-bold text-green-400 mb-1">500K+</div>
+                <div className="text-xs text-gray-400">Gratitudes</div>
               </div>
             </motion.div>
           </motion.section>
@@ -143,7 +143,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                 <Heart className="h-6 w-6 text-teal-400 fill-current" />
                 <h2 className="text-xl font-bold">Our Mission</h2>
               </div>
-              <p className="text-gray-300 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed text-sm">
                 We're building a world where gratitude has real value. Every IKE Coin represents 
                 genuine appreciation, creating a permanent record of human excellence on the blockchain.
               </p>
@@ -170,8 +170,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                   1
                 </div>
                 <div>
-                  <div className="font-medium">Send Gratitude</div>
-                  <div className="text-sm text-gray-400">Tip creators with IKE Coins</div>
+                  <div className="font-medium text-sm">Give Real Value</div>
+                  <div className="text-xs text-gray-400">Tip creators with IKE Coins</div>
                 </div>
               </motion.div>
 
@@ -186,8 +186,8 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                   2
                 </div>
                 <div>
-                  <div className="font-medium">Build Records</div>
-                  <div className="text-sm text-gray-400">Create permanent appreciation</div>
+                  <div className="font-medium text-sm">A New Gratitude Economy</div>
+                  <div className="text-xs text-gray-400">Create permanent appreciation</div>
                 </div>
               </motion.div>
 
@@ -202,8 +202,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onGetStarted, onNavigate }) =
                   3
                 </div>
                 <div>
-                  <div className="font-medium">Earn Value</div>
-                  <div className="text-sm text-gray-400">Receive IKE for excellence</div>
+                  <div className="font-medium text-sm">
+                    <span className="text-gray-400">Permanently on</span>{' '}
+                    <span className="text-green-400">Algorand</span>
+                  </div>
+                  <div className="text-xs text-gray-400">Receive IKE for excellence</div>
                 </div>
               </motion.div>
             </div>
